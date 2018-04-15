@@ -93,8 +93,8 @@
             "walletsDescriptionNotEnoughFunds": "Uma vez que você obtiver ao menos 1 feather poderá criar contratos mais sofisticados como carteiras, que podem funcionar como contas conjuntas administradas por diversas contas e ter limites diários de saques. Para criar um contrato ainda mais personalizado, vá na aba  <em>Contratos</em>.",
             "accountsDescription": "Contas são chaves privadas protegidas por uma senha, que podem armazenar feather, outras moedas baseadas no feathereum e controlar contratos. Contas não exibem transações recebidas.",
             "buttons": {
-                "deposit": "Depositar Ether",
-                "buyEther": "Comprar Ether",
+                "deposit": "Depositar Feather",
+                "buyEther": "Comprar Feather",
                 "viewOnExplorer": "Ver no Etherscan",
                 "copyAddress": "Copiar endereço",
                 "scanQRCode": "Mostrar código QR",
