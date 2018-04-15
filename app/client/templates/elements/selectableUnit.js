@@ -17,7 +17,8 @@ The available units
 @property selectableUnits
 */
 selectableUnits = [{
-    text: 'ETHER',
+    text: 'FEATHER',
+    // TODO changing this maybe require us to also change web3
     value: 'ether'
 },
 {
@@ -46,25 +47,27 @@ selectableUnits = [{
 }];
 
 
-// Aprils fool
-if (moment().format('MM-DD')=='04-01') {
-    selectableUnits.push({ text: 'SZABO', value: 'szabo'},
-        { text: 'SHANNON', value: 'shannon'},
-        { text: 'LOVELACE', value: 'lovelace'},
-        { text: 'BABBAGE', value: 'babbage'},
-        { text: 'WEI', value: 'wei'},
-        { text: 'NOETHER', value: 'noether'})
+// FIXME [Insert some jokes here]
 
-// Claude's Birthday
-} else if (moment().format('MM-DD')=='04-30') {
-    selectableUnits.push({ text: 'SHANNON', value: 'shannon'})
-// Ada's Birthday
-} else if (moment().format('MM-DD')=='12-10') {
-    selectableUnits.push({ text: 'LOVELACE', value: 'lovelace'})
-// Charles's Birthday
-} else if (moment().format('MM-DD')=='12-26') {
-    selectableUnits.push({ text: 'BABBAGE', value: 'babbage'})
-}
+// // Aprils fool
+// if (moment().format('MM-DD')=='04-01') {
+//     selectableUnits.push({ text: 'SZABO', value: 'szabo'},
+//         { text: 'SHANNON', value: 'shannon'},
+//         { text: 'LOVELACE', value: 'lovelace'},
+//         { text: 'BABBAGE', value: 'babbage'},
+//         { text: 'WEI', value: 'wei'},
+//         { text: 'NOETHER', value: 'noether'})
+//
+// // Claude's Birthday
+// } else if (moment().format('MM-DD')=='04-30') {
+//     selectableUnits.push({ text: 'SHANNON', value: 'shannon'})
+// // Ada's Birthday
+// } else if (moment().format('MM-DD')=='12-10') {
+//     selectableUnits.push({ text: 'LOVELACE', value: 'lovelace'})
+// // Charles's Birthday
+// } else if (moment().format('MM-DD')=='12-26') {
+//     selectableUnits.push({ text: 'BABBAGE', value: 'babbage'})
+// }
 
 
 Template['elements_selectableUnit'].helpers({
