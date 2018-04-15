@@ -1,6 +1,7 @@
 Session.setDefault('network', false);
 
 // MAIN-NET CONTRACT ADDRESS
+// TODO deploy and change it to that address
 var mainNetAddress = '0x273930d21e01ee25e4c219b63259d214872220a2';
 var testNetAddress = '0x1d649ca03d1bcd84877482c1dd8d3f9a7398728f'; // morden testnet
 
@@ -13,6 +14,7 @@ originalContractAddress = mainNetAddress;
 
 // CONTRACT VERSIONS
 contractVersions = [
+    // TODO change this
     // 0 foundation
     {
         original: '971ac1efe62de02ab7497cf2cad2b93ce990a8d11c3a544943baf807e42eab7d',
@@ -32,6 +34,7 @@ contractVersions = [
 // CHECK FOR NETWORK
 web3.eth.getBlock(0, function(e, res){
     if(!e){
+        // TODO change it to main net genesis block hash
         switch(res.hash) {
             case '0xd4e56740f876aef8c010b86a40d5f56745a118d0906a34e69aec8c0db1cb8fa3':
                 Session.set('network', 'main');

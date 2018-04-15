@@ -35,6 +35,7 @@ Meteor.startup(function() {
 
             // wait 5s, to allow the tokens to be loaded from the localstorage first
             Meteor.setTimeout(function(){
+                // TODO Change it to some tokens address
                 var unicornToken = '0x89205a3a3b2a69de6dbf7f01ed13b2108b2c43e7';
                 tokenId = Helpers.makeId('token', unicornToken);
                 Tokens.upsert(tokenId, {$set: {
