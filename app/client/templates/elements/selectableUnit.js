@@ -18,10 +18,9 @@ The available units
 */
 selectableUnits = [{
     text: 'FEATHER',
-    // TODO changing this maybe require us to also change web3
-    value: 'ether'
+    value: 'feather'
 },
-{
+{// TODO should change below
     text: 'FINNEY', //(µΞ)
     value: 'finney'
 },

@@ -23,7 +23,7 @@ contractVersions = [
         address: '0x4efc6389b88569a375668b7b3bd4a9b6c8f4a942'
     },
     // 1 better daily limit
-    { 
+    {
         original: '8207780d6fb31803373aff97360562231187ebb0da6b4678eeb68ceb16897509',
         stub: '',
         address: '0x273930d21e01ee25e4c219b63259d214872220a2'
@@ -36,7 +36,7 @@ web3.eth.getBlock(0, function(e, res){
     if(!e){
         // TODO change it to main net genesis block hash
         switch(res.hash) {
-            case '0xd4e56740f876aef8c010b86a40d5f56745a118d0906a34e69aec8c0db1cb8fa3':
+            case '0x5b47fb76b768ad787453cefadd920ff740e950f431b74742419685266484e43e':
                 Session.set('network', 'main');
                 break;
             case '0x6341fd3daf94b748c72ced5a5b26028f2474f5f00d824504e4fa37a75767e177':
@@ -136,11 +136,11 @@ var checkCodeOnAddress = function(address, callback) {
                 if(address === testNetAddress) {
                     console.log('Use Test-net wallet as code base for stubs on address: ', address);
                 }
-            
+
             // use testnet or private net address, or re-deploy
             } else {
 
-                callback();                
+                callback();
             }
         } else {
             GlobalNotification.error({
@@ -166,7 +166,7 @@ checkForOriginalWallet = function() {
     });
 
     // Only check for the wallet if user has enough funds to deploy it
-    if (enoughBalance) {     
+    if (enoughBalance) {
         // see if the original wallet is deployed, if not re-deploy on testnet
         checkCodeOnAddress(mainNetAddress, function() {
             checkCodeOnAddress(testNetAddress, function() {
@@ -192,7 +192,7 @@ checkForOriginalWallet = function() {
                     deployTestnetWallet();
             });
         });
-    } 
+    }
 }
 
 
@@ -216,7 +216,7 @@ checkWalletOwners = function(address) {
             myContract.m_numOwners(function(e, numberOfOwners){
                 if(!e) {
                     numberOfOwners = numberOfOwners.toNumber();
-                    
+
                     if(numberOfOwners > 0) {
                         var owners = [];
 
@@ -226,10 +226,10 @@ checkWalletOwners = function(address) {
                                 web3.eth.getStorageAt(address, 2+i, function(e, ownerAddress){
                                     if(!e) {
                                         ownerAddress = ownerAddress.replace('0x000000000000000000000000','0x');
-                                        
+
                                         if(owners.length > numberOfOwners)
                                             return resolve();
-                                        
+
                                         if(web3.isAddress(ownerAddress) && ownerAddress !== '0x0000000000000000000000000000000000000000') {
                                             myContract.isOwner.call(ownerAddress, {from: ownerAddress}, function(e, isOwner){
                                                 if(!e && isOwner) {

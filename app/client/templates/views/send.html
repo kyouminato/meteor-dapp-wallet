@@ -40,7 +40,7 @@
             <div class="col col-6 mobile-full amount">
                 <h3>{{i18n 'wallet.send.amount'}}</h3>
                 {{#if TemplateVar.get "sendAll"}}
-                    {{#if $eq (TemplateVar.get "selectedToken") "ether"}}
+                    {{#if $eq (TemplateVar.get "selectedToken") "feather"}}
                         <input type="text" name="amount" class="dapp-large" value="{{clearAmountFromChars (dapp_formatBalance sendAllAmount '0,0.[000000000000000000]')}}" disabled>
                     {{else}}
                         <input type="text" name="amount" class="dapp-large" value="{{clearAmountFromChars (formatNumberByDecimals sendAllAmount tokenDecimals)}}" disabled>
@@ -56,7 +56,7 @@
                 </label>
 
                 <p class="send-info">
-                    {{#if $eq (TemplateVar.get "selectedToken") "ether"}}
+                    {{#if $eq (TemplateVar.get "selectedToken") "feather"}}
                         {{#if isEtherUnit}}
                             {{{i18n 'wallet.send.texts.sendAmount' amount=(dapp_formatBalance (TemplateVar.get "amount") "0,0.[000000000000000000] UNIT" "feather")}}}
                         {{else}}
@@ -76,12 +76,12 @@
                 {{#if hasTokens}}
                     <ul class="select-token">
                         <li>
-                            <input type="radio" id="ether" value="ether" name="choose-token" {{tokenSelectedAttr 'ether'}}>
+                            <input type="radio" id="ether" value="ether" name="choose-token" {{tokenSelectedAttr 'feather'}}>
                             <label for="ether">
                                 <span class="ether-symbol">ξ</span>
                                 <span class="token-name">FEATHER</span>
                                 <span class="balance">
-                                    {{#if $neq unit 'ether'}}
+                                    {{#if $neq unit 'feather'}}
                                         {{dapp_formatBalance selectedAccount.balance "0,0.00 UNIT"}} ({{dapp_formatBalance selectedAccount.balance "0,0.00[0000000000000000] UNIT" "feather"}})
                                     {{else}}
                                         {{dapp_formatBalance selectedAccount.balance "0,0.00[0000000000000000] UNIT" "feather"}}
@@ -107,7 +107,7 @@
                         <span class="ether-symbol">ξ</span>
                         <span class="token-name">FEATHER</span>
                         <span class="balance">
-                            {{#if $neq unit 'ether'}}
+                            {{#if $neq unit 'feather'}}
                                 {{dapp_formatBalance selectedAccount.balance "0,0.00 UNIT"}} ({{dapp_formatBalance selectedAccount.balance "0,0.00[0000000000000000] UNIT" "feather"}})
                             {{else}}
                                 {{dapp_formatBalance selectedAccount.balance "0,0.00[0000000000000000] UNIT" "feather"}}
@@ -121,7 +121,7 @@
             <div class="dapp-clear-fix"></div>
         </div>
 
-        {{#if $eq (TemplateVar.get "selectedToken") "ether"}}
+        {{#if $eq (TemplateVar.get "selectedToken") "feather"}}
             {{> elements_compileContract onlyByteCode=showOnlyByteTextarea codeNotExecutable=(TemplateVar.get "codeNotExecutable")}}
         {{/if}}
 
@@ -131,7 +131,7 @@
             <div class="col col-7 mobile-full">
                 <h3>{{i18n 'wallet.send.fee'}}</h3>
 
-                {{> dapp_selectGasPrice gas=(TemplateVar.get "estimatedGas") gasPrice=latestBlock.gasPrice unit="feather"}}
+                {{> dapp_selectGasPrice gas=(TemplateVar.get "estimatedGas") gasPrice=latestBlock.gasPrice}}
             </div>
 
             <div class="col col-5 mobile-full send-info">
@@ -152,9 +152,9 @@
         <div class="row clear total">
             <div class="col col-12 mobile-full">
                 <h3>{{i18n "commonWords.total"}}</h3>
-                {{#if $eq (TemplateVar.get "selectedToken") "ether"}}
+                {{#if $eq (TemplateVar.get "selectedToken") "feather"}}
                     <span class="amount">{{dapp_formatBalance total "0,0.00[0000000000000000] UNIT" "feather"}}</span>
-                    {{#if $neq unit 'ether'}}
+                    {{#if $neq unit 'feather'}}
                         <br>
                         ({{dapp_formatBalance total "0,0.00[0000000000000000] UNIT" "feather"}})
                     {{/if}}

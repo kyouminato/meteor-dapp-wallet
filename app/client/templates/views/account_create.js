@@ -19,10 +19,10 @@ Template['views_account_create'].onCreated(function(){
     var maxOwners = FlowRouter.getQueryParam('ownersNum');
     if(maxOwners && Helpers.isWatchOnly(walletId))
         maxOwners++;
-    TemplateVar.set('multisigSignees', maxOwners || 3);     
+    TemplateVar.set('multisigSignees', maxOwners || 3);
 
-    // number of required signatures    
-    TemplateVar.set('multisigSignatures', Number(FlowRouter.getQueryParam('requiredSignatures')) || 2);   
+    // number of required signatures
+    TemplateVar.set('multisigSignatures', Number(FlowRouter.getQueryParam('requiredSignatures')) || 2);
 
 
     // check if we are still on the correct chain
@@ -82,7 +82,7 @@ Template['views_account_create'].helpers({
     'defaultOwner': function() {
         // Load the accounts owned by user and sort by balance
         var accounts = EthAccounts.find({}, {sort: {balance: -1}}).fetch();
-        accounts.sort(Helpers.sortByBalance);        
+        accounts.sort(Helpers.sortByBalance);
 
         if (FlowRouter.getQueryParam('owners')) {
             var owners = FlowRouter.getQueryParam('owners').split(',');
@@ -95,7 +95,7 @@ Template['views_account_create'].helpers({
             return defaultAccount ? defaultAccount.address : null;
         } else {
             return accounts[0].address;
-        }       
+        }
     },
     /**
     Return the number of signees fields
@@ -109,15 +109,15 @@ Template['views_account_create'].helpers({
         if (FlowRouter.getQueryParam('owners')) {
             owners = FlowRouter.getQueryParam('owners').split(',').slice(0, TemplateVar.get('multisigSignees'));
             owners = _.without(owners, TemplateVar.getFrom('.dapp-select-account', 'value'));
-        } 
-        
+        }
+
         owners = owners.concat(_.range(TemplateVar.get('multisigSignees') - 1 - owners.length));
 
         if (TemplateVar.get('multisigSignatures') > TemplateVar.get('multisigSignees')) {
             TemplateVar.set('multisigSignatures', TemplateVar.get('multisigSignees'));
-        }        
+        }
 
-        return owners;        
+        return owners;
     },
     /**
     Translates to 'owner address'
@@ -176,7 +176,7 @@ Template['views_account_create'].helpers({
         var returnArray = [];
         for (i = 2; i<=maxOwners; i++) {
             returnArray.push({value:i, text:i});
-        } 
+        }
         return returnArray;
     },
     /**
@@ -187,7 +187,7 @@ Template['views_account_create'].helpers({
     'multisigSignatures': function() {
         var signees = TemplateVar.get('multisigSignees');
         var returnArray = []
-        
+
 
         for (i = 2; i<=signees; i++) {
             returnArray.push({value:i, text:i});
@@ -218,7 +218,7 @@ Template['views_account_create'].helpers({
     */
     'defaultDailyLimit': function() {
         var dailyLimit = FlowRouter.getQueryParam('dailyLimit');
-        return typeof dailyLimit != 'undefined' ? web3.fromWei(dailyLimit,'ether') :  10;
+        return typeof dailyLimit != 'undefined' ? web3.fromWei(dailyLimit,'feather') :  10;
     },
     /**
     Default Name
@@ -233,7 +233,7 @@ Template['views_account_create'].helpers({
 Template['views_account_create'].events({
     /**
     Check the owner of the imported wallet.
-    
+
     @event change input.import, input input.import
     */
     'change input.import, input input.import': function(e, template){
@@ -246,7 +246,7 @@ Template['views_account_create'].events({
     },
     /**
     Check the owner that its not a contract wallet
-    
+
     @event change input.owners, input input.owners
     */
     'change input.owners, input input.owners': function(e, template){
@@ -276,7 +276,7 @@ Template['views_account_create'].events({
     'click span[name="multisigSignees"] .simple-modal button': function(e){
         TemplateVar.set('multisigSignees',  $(e.currentTarget).data('value'));
     },
-    
+
     /**
     Create the account
 
@@ -321,7 +321,7 @@ Template['views_account_create'].events({
                 owners: owners,
                 name: template.find('input[name="accountName"]').value || TAPi18n.__('wallet.accounts.defaultName'),
                 balance: '0',
-                dailyLimit: web3.toWei(formValues.dailyLimitAmount, 'ether'),
+                dailyLimit: web3.toWei(formValues.dailyLimitAmount, 'feather'),
                 requiredSignatures: formValues.multisigSignatures,
                 creationBlock: EthBlocks.latest.number,
                 code: code
