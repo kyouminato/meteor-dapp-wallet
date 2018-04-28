@@ -153,7 +153,7 @@
             <div class="col col-12 mobile-full">
                 <h3>{{i18n "commonWords.total"}}</h3>
                 {{#if $eq (TemplateVar.get "selectedToken") "feather"}}
-                    <span class="amount">{{dapp_formatBalance total "0,0.00[0000000000000000] UNIT" "feather"}}</span>
+                    <span class="amount">{{dapp_formatBalance total "0,0.00[0000000000000000] UNIT"}}</span>
                     {{#if $neq unit 'feather'}}
                         <br>
                         ({{dapp_formatBalance total "0,0.00[0000000000000000] UNIT" "feather"}})
