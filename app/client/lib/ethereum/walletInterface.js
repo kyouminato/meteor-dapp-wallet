@@ -36,13 +36,14 @@ web3.eth.getBlock(0, function(e, res){
     if(!e){
         // TODO change it to main net genesis block hash
         switch(res.hash) {
-            case '0x5b47fb76b768ad787453cefadd920ff740e950f431b74742419685266484e43e':
+            case '0x89b8a362a957b04f0c705b695bea110eec4b1c4ab5cd3a8884fb0536ad80b753':
                 Session.set('network', 'main');
                 break;
-            case '0x6341fd3daf94b748c72ced5a5b26028f2474f5f00d824504e4fa37a75767e177':
-                Session.set('network', 'rinkeby');
-                break;
-            case '0x41941023680923e0fe4d74a34bdac8141f2540e3ae90623718e47d66d1ca4a2d':
+          // TODO change rinkeby
+            // case '0x4ad0da7ef676ee3211fcd6f8b038aa4058823612ff82a939095ea4e327b6745a':
+            //     Session.set('network', 'rinkeby');
+            //     break;
+            case '0xd09db2a8064b6915aa80aea67d1a052855ca294b401e6b37fa246861fcffe7a0':
                 Session.set('network', 'ropsten');
                 break;
             default:
